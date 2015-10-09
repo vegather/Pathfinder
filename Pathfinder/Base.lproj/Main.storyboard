@@ -1,25 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="i8J-CL-bKj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="b6O-Ou-Izg">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i8J-CL-bKj" customClass="ViewController" customModule="a3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="UfU-BU-MAk"/>
+                        <viewControllerLayoutGuide type="bottom" id="tzl-l8-M52"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="qUQ-Wf-1np">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gbf-3K-1hC" customClass="NodeGraphView" customModule="a3" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="560" height="408"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5D-B8-XIJ">
+                                <rect key="frame" x="0.0" y="436" width="600" height="164"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="164" id="qz7-xu-NmE"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gbf-3K-1hC" firstAttribute="top" secondItem="qUQ-Wf-1np" secondAttribute="topMargin" constant="20" id="4zL-Iu-AkX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="X5D-B8-XIJ" secondAttribute="trailing" constant="-20" id="93b-d5-puw"/>
+                            <constraint firstItem="X5D-B8-XIJ" firstAttribute="top" secondItem="Gbf-3K-1hC" secondAttribute="bottom" constant="8" id="ADf-iB-9Va"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gbf-3K-1hC" secondAttribute="trailing" id="Mu5-I9-fRz"/>
+                            <constraint firstItem="tzl-l8-M52" firstAttribute="top" secondItem="X5D-B8-XIJ" secondAttribute="bottom" id="NsU-Nd-xzb"/>
+                            <constraint firstItem="Gbf-3K-1hC" firstAttribute="leading" secondItem="qUQ-Wf-1np" secondAttribute="leadingMargin" id="X5k-SH-RWM"/>
+                            <constraint firstItem="X5D-B8-XIJ" firstAttribute="leading" secondItem="qUQ-Wf-1np" secondAttribute="leadingMargin" constant="-20" id="gdY-C1-gJb"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapPicker" destination="X5D-B8-XIJ" id="vqQ-2k-RYT"/>
+                        <outlet property="nodeView" destination="Gbf-3K-1hC" id="F32-5M-GHY"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TrY-tc-iWo" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="187" y="563"/>
         </scene>
     </scenes>
 </document>

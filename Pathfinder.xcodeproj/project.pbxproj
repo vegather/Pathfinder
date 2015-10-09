@@ -14,6 +14,11 @@
 		9A91D4A11BC81CA8003D4F34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A91D49F1BC81CA8003D4F34 /* LaunchScreen.storyboard */; };
 		9A91D4AC1BC81CA8003D4F34 /* PathfinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4AB1BC81CA8003D4F34 /* PathfinderTests.swift */; };
 		9A91D4B71BC81CA8003D4F34 /* PathfinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4B61BC81CA8003D4F34 /* PathfinderUITests.swift */; };
+		9A91D4C51BC81CB9003D4F34 /* boards in Resources */ = {isa = PBXBuildFile; fileRef = 9A91D4C41BC81CB9003D4F34 /* boards */; settings = {ASSET_TAGS = (); }; };
+		9A91D4CA1BC81DFB003D4F34 /* NodeGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C61BC81DFB003D4F34 /* NodeGraphView.swift */; settings = {ASSET_TAGS = (); }; };
+		9A91D4CB1BC81DFB003D4F34 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C71BC81DFB003D4F34 /* NodeType.swift */; settings = {ASSET_TAGS = (); }; };
+		9A91D4CC1BC81DFB003D4F34 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C81BC81DFB003D4F34 /* Pathfinder.swift */; settings = {ASSET_TAGS = (); }; };
+		9A91D4CD1BC81DFB003D4F34 /* MapLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C91BC81DFB003D4F34 /* MapLoader.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		9A91D4B21BC81CA8003D4F34 /* PathfinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PathfinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A91D4B61BC81CA8003D4F34 /* PathfinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathfinderUITests.swift; sourceTree = "<group>"; };
 		9A91D4B81BC81CA8003D4F34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A91D4C41BC81CB9003D4F34 /* boards */ = {isa = PBXFileReference; lastKnownFileType = folder; path = boards; sourceTree = "<group>"; };
+		9A91D4C61BC81DFB003D4F34 /* NodeGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeGraphView.swift; sourceTree = "<group>"; };
+		9A91D4C71BC81DFB003D4F34 /* NodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
+		9A91D4C81BC81DFB003D4F34 /* Pathfinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pathfinder.swift; sourceTree = "<group>"; };
+		9A91D4C91BC81DFB003D4F34 /* MapLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +109,12 @@
 			children = (
 				9A91D4961BC81CA8003D4F34 /* AppDelegate.swift */,
 				9A91D4981BC81CA8003D4F34 /* ViewController.swift */,
+				9A91D4C61BC81DFB003D4F34 /* NodeGraphView.swift */,
+				9A91D4C71BC81DFB003D4F34 /* NodeType.swift */,
+				9A91D4C81BC81DFB003D4F34 /* Pathfinder.swift */,
+				9A91D4C91BC81DFB003D4F34 /* MapLoader.swift */,
 				9A91D49A1BC81CA8003D4F34 /* Main.storyboard */,
+				9A91D4C41BC81CB9003D4F34 /* boards */,
 				9A91D49D1BC81CA8003D4F34 /* Assets.xcassets */,
 				9A91D49F1BC81CA8003D4F34 /* LaunchScreen.storyboard */,
 				9A91D4A21BC81CA8003D4F34 /* Info.plist */,
@@ -229,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A91D4A11BC81CA8003D4F34 /* LaunchScreen.storyboard in Resources */,
+				9A91D4C51BC81CB9003D4F34 /* boards in Resources */,
 				9A91D49E1BC81CA8003D4F34 /* Assets.xcassets in Resources */,
 				9A91D49C1BC81CA8003D4F34 /* Main.storyboard in Resources */,
 			);
@@ -255,6 +271,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A91D4CC1BC81DFB003D4F34 /* Pathfinder.swift in Sources */,
+				9A91D4CD1BC81DFB003D4F34 /* MapLoader.swift in Sources */,
+				9A91D4CA1BC81DFB003D4F34 /* NodeGraphView.swift in Sources */,
+				9A91D4CB1BC81DFB003D4F34 /* NodeType.swift in Sources */,
 				9A91D4991BC81CA8003D4F34 /* ViewController.swift in Sources */,
 				9A91D4971BC81CA8003D4F34 /* AppDelegate.swift in Sources */,
 			);
