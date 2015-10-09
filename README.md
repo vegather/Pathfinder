@@ -23,15 +23,17 @@ As for the mazes (boards 1-x.txt), the obstacles are specially taken care of to 
 
 ## Demo
 
-Board 1-3 A*
-![Board 1-3 using A*](http://imgur.com/3bjWUOG)
+What the path is should be pretty obvious from these screenshots. The circles are the nodes in the open list, and the crosses are the nodes in the closed list. Learn more about those here: [A* Algorithm on Wikipedia](https://en.wikipedia.org/wiki/A*_search_algorithm)
 
-Board 1-3 BFS
-![Board 1-3 using BFS](http://imgur.com/jKf81NY)
+Board 1-3 using A*
+![Board 1-3 using A*](http://imgur.com/3bjWUOG.png)
 
-Board 2-4 A*
-![Board 2-4 using A*](http://imgur.com/F2g5Bm8)
+Board 1-3 using BFS
+![Board 1-3 using BFS](http://imgur.com/jKf81NY.png)
 
-Board 2-4 BFS
-![Board 2-4 using BFS](http://imgur.com/SzFYKEN)
+Board 2-4 using A*
+![Board 2-4 using A*](http://imgur.com/F2g5Bm8.png)
+
+Board 2-4 using BFS
+![Board 2-4 using BFS](http://imgur.com/SzFYKEN.png)
 
