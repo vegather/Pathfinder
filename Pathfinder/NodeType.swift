@@ -36,19 +36,19 @@ func ==(lhs: Coordinate, rhs: Coordinate) -> Bool {
 
 // Specifies what type a certain node is
 enum NodeCategory {
-    case Start
-    case End
+    case start
+    case end
     
     // Subproblem A.1
-    case Empty
-    case Obstacle
+    case empty
+    case obstacle
     
     // Subproblem A.2
-    case Water
-    case Mountains
-    case Forests
-    case Grasslands
-    case Roads
+    case water
+    case mountains
+    case forests
+    case grasslands
+    case roads
 }
 
 
@@ -69,7 +69,7 @@ class Node: CustomStringConvertible, Equatable {
     var h:          Int32?   // Has to be Int32 to support the INT_MAX in cost
     var f:          Int32? { // Has to be Int32 to support the INT_MAX in cost
         // Does f calculations implicitly
-        if let h = h, g = g { return h + g }
+        if let h = h, let g = g { return h + g }
         else { return nil }
     }
     
@@ -84,17 +84,17 @@ class Node: CustomStringConvertible, Equatable {
     // Represents the cost from some node TO this node
     var cost: Int32 {
         switch nodeCategory {
-        case .Start, .End, .Roads, .Empty:
+        case .start, .end, .roads, .empty:
             return 1
-        case .Obstacle:
+        case .obstacle:
             return -1
-        case .Water:
+        case .water:
             return 100
-        case .Mountains:
+        case .mountains:
             return 50
-        case .Forests:
+        case .forests:
             return 10
-        case .Grasslands:
+        case .grasslands:
             return 5
         }
     }
@@ -102,23 +102,23 @@ class Node: CustomStringConvertible, Equatable {
     // CustomStringConvertible
     var description: String {
         switch nodeCategory {
-        case .Start:
+        case .start:
             return "A"
-        case .End:
+        case .end:
             return "B"
-        case .Empty:
+        case .empty:
             return "."
-        case .Obstacle:
+        case .obstacle:
             return "#"
-        case .Water:
+        case .water:
             return "w"
-        case .Mountains:
+        case .mountains:
             return "m"
-        case .Forests:
+        case .forests:
             return "f"
-        case .Grasslands:
+        case .grasslands:
             return "g"
-        case .Roads:
+        case .roads:
             return "r"
         }
     }
@@ -146,7 +146,7 @@ struct NodeMap: CustomStringConvertible {
     let startNode: Node
     let endNode: Node
     
-    private var nodes = [[Node]]()
+    fileprivate var nodes = [[Node]]()
     
     init(mapAsString: [String]) {
         var start: Node?
@@ -158,31 +158,31 @@ struct NodeMap: CustomStringConvertible {
             var currentRow = [Node]()
             
             for col in 0..<(rowString.characters.count) {
-                let character = rowString.characters[rowString.startIndex.advancedBy(col)]
+                let character = rowString.characters[rowString.characters.index(rowString.startIndex, offsetBy: col)]
                 
                 let currentNode: Node
                 
                 switch character {
                 case "A":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .Start)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .start)
                     start = currentNode
                 case "B":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .End)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .end)
                     end = currentNode
                 case ".":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .Empty)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .empty)
                 case "#":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .Obstacle)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .obstacle)
                 case "w":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .Water)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .water)
                 case "m":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .Mountains)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .mountains)
                 case "f":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .Forests)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .forests)
                 case "g":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .Grasslands)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .grasslands)
                 case "r":
-                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .Roads)
+                    currentNode = Node(coordinate: Coordinate(x: col, y: row), category: .roads)
                 default:
                     print("\(character) is not a valid part of a map")
                     fatalError()
@@ -193,7 +193,7 @@ struct NodeMap: CustomStringConvertible {
             nodes.append(currentRow)
         }
         
-        if let start = start, end = end {
+        if let start = start, let end = end {
             startNode = start
             endNode = end
         } else {
@@ -202,7 +202,7 @@ struct NodeMap: CustomStringConvertible {
         }
     }
     
-    func getNode(coordinate: Coordinate) -> Node? {
+    func getNode(_ coordinate: Coordinate) -> Node? {
         if coordinate.x >= 0 && coordinate.x < mapWidth &&
            coordinate.y >= 0 && coordinate.y < mapHeight
         {
@@ -212,7 +212,7 @@ struct NodeMap: CustomStringConvertible {
         }
     }
     
-    mutating func updateNodeAtCoordinate(coordinate: Coordinate, newNode: Node) {
+    mutating func updateNodeAtCoordinate(_ coordinate: Coordinate, newNode: Node) {
         nodes[coordinate.y][coordinate.x] = newNode
     }
     

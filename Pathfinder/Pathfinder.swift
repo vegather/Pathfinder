@@ -9,17 +9,17 @@
 import Foundation
 
 enum Algorithm: CustomStringConvertible {
-    case AStar
-    case BFS
-    case Dijkstra
+    case aStar
+    case bfs
+    case dijkstra
     
     var description: String {
         switch self {
-        case .AStar:
+        case .aStar:
             return "A*"
-        case .BFS:
+        case .bfs:
             return "BFS"
-        case .Dijkstra:
+        case .dijkstra:
             return "Dijkstra's"
         }
     }
@@ -115,8 +115,7 @@ struct Pathfinder {
                 }
                     
                 // else if g(X) + arc-cost(X,S) < g(S) then (found cheaper path to S):
-                else if let currentNodeG = currentNode.g, successorG = successor.g
-                    where currentNodeG + successor.cost < successorG
+                else if let currentNodeG = currentNode.g, let successorG = successor.g, currentNodeG + successor.cost < successorG
                 {
                     // attach-and-eval(S,X)
                     attachAndEval(child: successor, parent: currentNode)
@@ -140,7 +139,7 @@ struct Pathfinder {
     // -------------------------------
     
     // Returns all adjacent nodes that or not the nodes parent
-    private func getSuccessorNodes(node: Node) -> [Node] {
+    fileprivate func getSuccessorNodes(_ node: Node) -> [Node] {
         let x = node.coordinate.x
         let y = node.coordinate.y
         
@@ -151,29 +150,29 @@ struct Pathfinder {
         // not considered a successor.
         
         if let top = map.getNode(Coordinate(x: x, y: y - 1)) {
-            if let parent = node.parent where top == parent { }
-            else if top.nodeCategory != .Obstacle {
+            if let parent = node.parent, top == parent { }
+            else if top.nodeCategory != .obstacle {
                 successors.append(top)
             }
         }
         
         if let right = map.getNode(Coordinate(x: x + 1, y: y)) {
-            if let parent = node.parent where right == parent {}
-            else if right.nodeCategory != .Obstacle  {
+            if let parent = node.parent, right == parent {}
+            else if right.nodeCategory != .obstacle  {
                 successors.append(right)
             }
         }
         
         if let bottom = map.getNode(Coordinate(x: x, y: y + 1)) {
-            if let parent = node.parent where bottom == parent { }
-            else if bottom.nodeCategory != .Obstacle  {
+            if let parent = node.parent, bottom == parent { }
+            else if bottom.nodeCategory != .obstacle  {
                 successors.append(bottom)
             }
         }
         
         if let left = map.getNode(Coordinate(x: x - 1, y: y)) {
-            if let parent = node.parent where left == parent { }
-            else if left.nodeCategory != .Obstacle  {
+            if let parent = node.parent, left == parent { }
+            else if left.nodeCategory != .obstacle  {
                 successors.append(left)
             }
         }
@@ -182,9 +181,9 @@ struct Pathfinder {
     }
     
     // Returns and removes the first node of open, if there was one
-    private mutating func popOpen() -> Node? {
+    fileprivate mutating func popOpen() -> Node? {
         if open.count > 0 {
-            return open.removeAtIndex(0)
+            return open.remove(at: 0)
         } else {
             // The open list is empty, and the algorithm is done
             return nil
@@ -192,45 +191,45 @@ struct Pathfinder {
     }
     
     // Will insert a node to the correct index in open
-    private mutating func insertIntoOpen(node: Node) {
+    fileprivate mutating func insertIntoOpen(_ node: Node) {
         
         switch algorithm {
-        case .AStar:
+        case .aStar:
             var index = 0
             
             for nIndex in 0..<(open.count) {
                 let n = open[nIndex]
                 
-                if let nF = n.f, nodeF = node.f where nF >= nodeF {
+                if let nF = n.f, let nodeF = node.f, nF >= nodeF {
                     break
                 } else {
-                    index++
+                    index += 1
                 }
             }
             
-            open.insert(node, atIndex: index)
-        case .BFS:
+            open.insert(node, at: index)
+        case .bfs:
             open.append(node)
-        case .Dijkstra:
+        case .dijkstra:
             var index = 0
             
             for nIndex in 0..<(open.count) {
                 let n = open[nIndex]
                 
-                if let nG = n.g, nodeG = node.g where nG >= nodeG {
+                if let nG = n.g, let nodeG = node.g, nG >= nodeG {
                     break
                 } else {
-                    index++
+                    index += 1
                 }
             }
             
-            open.insert(node, atIndex: index)
+            open.insert(node, at: index)
         }
         
     }
     
     // Will return the path with the startNode as index 0, and destination as the last node
-    private func getPathFromStartTo(destination: Node) -> [Node] {
+    fileprivate func getPathFromStartTo(_ destination: Node) -> [Node] {
         var currentNode = destination
         var path = [currentNode]
         
@@ -241,7 +240,7 @@ struct Pathfinder {
         while currentNode != map.startNode {
             if let parent = currentNode.parent {
                 currentNode = parent
-                path.insert(currentNode, atIndex: 0)
+                path.insert(currentNode, at: 0)
             } else {
                 return path
             }
@@ -251,7 +250,7 @@ struct Pathfinder {
     }
     
     // Gets the nodes that were explored, but are not part of the path
-    private func getClosedNodesWithoutPath(path: [Node], allClosed: [Node]) -> [Node] {
+    fileprivate func getClosedNodesWithoutPath(_ path: [Node], allClosed: [Node]) -> [Node] {
         var output = [Node]()
         
         for closedNode in allClosed {
@@ -263,7 +262,7 @@ struct Pathfinder {
         return output
     }
     
-    private func attachAndEval(child child: Node, parent: Node) {
+    fileprivate func attachAndEval(child: Node, parent: Node) {
         guard let parentG = parent.g else {
             print("The parent does not have a g value")
             return
@@ -275,7 +274,7 @@ struct Pathfinder {
     }
     
     // Recursively improve g improvements
-    private func propagatePathImprovements(parent: Node) {
+    fileprivate func propagatePathImprovements(_ parent: Node) {
         guard let parentG = parent.g else { return }
         
         for child in parent.children {
@@ -288,12 +287,12 @@ struct Pathfinder {
         }
     }
     
-    private func calculateH(node: Node) -> Int32 {
+    fileprivate func calculateH(_ node: Node) -> Int32 {
         return Int32(abs(node.coordinate.x - map.endNode.coordinate.x)) + Int32(abs(node.coordinate.y - map.endNode.coordinate.y))
     }
     
     // Prepare in case we want to calculate aStar again with the same map
-    private mutating func reset() {
+    fileprivate mutating func reset() {
         open = [Node]()
         closed = [Node]()
     }
