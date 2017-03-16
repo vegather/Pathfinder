@@ -9,15 +9,15 @@
 import Foundation
 
 struct MapLoader {
-    static func loadMapWithName(mapName: String) -> NodeMap? {
-        guard let mapPath = NSBundle.mainBundle().pathForResource("boards/\(mapName)", ofType: "txt") else { return nil }
+    static func loadMapWithName(_ mapName: String) -> NodeMap? {
+        guard let mapPath = Bundle.main.path(forResource: "boards/\(mapName)", ofType: "txt") else { return nil }
         let mapString: String
         do {
-            mapString = try String(contentsOfFile:mapPath, encoding: NSUTF8StringEncoding)
+            mapString = try String(contentsOfFile:mapPath, encoding: String.Encoding.utf8)
         } catch {
             return nil
         }
         
-        return NodeMap(mapAsString: mapString.componentsSeparatedByString("\n"))
+        return NodeMap(mapAsString: mapString.components(separatedBy: "\n"))
     }
 }

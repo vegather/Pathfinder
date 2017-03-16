@@ -21,15 +21,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         mapPicker.delegate = self
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         updateUI()
     }
     
-    private func updateUI() {
-        let nameIndex = mapPicker.selectedRowInComponent(0)
-        let algorithmIndex = mapPicker.selectedRowInComponent(1)
+    fileprivate func updateUI() {
+        let nameIndex = mapPicker.selectedRow(inComponent: 0)
+        let algorithmIndex = mapPicker.selectedRow(inComponent: 1)
         
         var boardName = ""
         if nameIndex == 0 {
@@ -53,11 +53,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         var algorithm: Algorithm
         if algorithmIndex == 0 {
-            algorithm = .AStar
+            algorithm = .aStar
         } else if algorithmIndex == 1 {
-            algorithm = .BFS
+            algorithm = .bfs
         } else {
-            algorithm = .Dijkstra
+            algorithm = .dijkstra
         }
         
         if let map = MapLoader.loadMapWithName(boardName) {
@@ -79,10 +79,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     // MARK: Picker View Data Source
     // -------------------------------
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
             return 8
         } else if component == 1 {
@@ -92,7 +92,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0 {
             if row == 0 {
                 return "Board 1-1"
@@ -124,7 +124,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return nil
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         updateUI()
     }
 }

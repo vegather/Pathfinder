@@ -2,9 +2,9 @@
 
 ## Description
 
-This is simply an implementation I wrote in Swift 2 for a school project of the three pathfinding algorithms: A*, Breadth First Search, and Dijkstra's. The difference between the three is in how they sort the list of "open" nodes, and can be seen in the `func insertIntoOpen(node: Node)` function in Pathfinder.swift.
+This is simply an implementation I wrote in Swift 3.1 for a school project of the three pathfinding algorithms: A*, Breadth First Search, and Dijkstra's. The difference between the three is in how they sort the list of "open" nodes, and can be seen in the `func insertIntoOpen(node: Node)` function in Pathfinder.swift.
 
-The app should work on both iPhone, iPod Touch, and iPad, but in all cases will work best in landscape mode.
+The app should work on both iPhone, iPod Touch, and iPad, but in all cases will work best in landscape mode (set in settings by default).
 
 The app works by loading in two types of text files: some with simply a maze (with the prefix board-1-...), and some with landscape where different tiles have different costs. The costs are shown below.
 

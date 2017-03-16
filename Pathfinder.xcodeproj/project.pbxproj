@@ -14,11 +14,11 @@
 		9A91D4A11BC81CA8003D4F34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A91D49F1BC81CA8003D4F34 /* LaunchScreen.storyboard */; };
 		9A91D4AC1BC81CA8003D4F34 /* PathfinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4AB1BC81CA8003D4F34 /* PathfinderTests.swift */; };
 		9A91D4B71BC81CA8003D4F34 /* PathfinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4B61BC81CA8003D4F34 /* PathfinderUITests.swift */; };
-		9A91D4C51BC81CB9003D4F34 /* boards in Resources */ = {isa = PBXBuildFile; fileRef = 9A91D4C41BC81CB9003D4F34 /* boards */; settings = {ASSET_TAGS = (); }; };
-		9A91D4CA1BC81DFB003D4F34 /* NodeGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C61BC81DFB003D4F34 /* NodeGraphView.swift */; settings = {ASSET_TAGS = (); }; };
-		9A91D4CB1BC81DFB003D4F34 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C71BC81DFB003D4F34 /* NodeType.swift */; settings = {ASSET_TAGS = (); }; };
-		9A91D4CC1BC81DFB003D4F34 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C81BC81DFB003D4F34 /* Pathfinder.swift */; settings = {ASSET_TAGS = (); }; };
-		9A91D4CD1BC81DFB003D4F34 /* MapLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C91BC81DFB003D4F34 /* MapLoader.swift */; settings = {ASSET_TAGS = (); }; };
+		9A91D4C51BC81CB9003D4F34 /* boards in Resources */ = {isa = PBXBuildFile; fileRef = 9A91D4C41BC81CB9003D4F34 /* boards */; };
+		9A91D4CA1BC81DFB003D4F34 /* NodeGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C61BC81DFB003D4F34 /* NodeGraphView.swift */; };
+		9A91D4CB1BC81DFB003D4F34 /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C71BC81DFB003D4F34 /* NodeType.swift */; };
+		9A91D4CC1BC81DFB003D4F34 /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C81BC81DFB003D4F34 /* Pathfinder.swift */; };
+		9A91D4CD1BC81DFB003D4F34 /* MapLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91D4C91BC81DFB003D4F34 /* MapLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,18 +202,22 @@
 		9A91D48B1BC81CA8003D4F34 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Vegard Solheim Theriault";
 				TargetAttributes = {
 					9A91D4921BC81CA8003D4F34 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = DZK8EVM94K;
+						LastSwiftMigration = 0830;
 					};
 					9A91D4A61BC81CA8003D4F34 = {
 						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 9A91D4921BC81CA8003D4F34;
 					};
 					9A91D4B11BC81CA8003D4F34 = {
 						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 9A91D4921BC81CA8003D4F34;
 					};
 				};
@@ -344,8 +348,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -389,8 +395,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -409,6 +417,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -418,10 +427,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DZK8EVM94K;
 				INFOPLIST_FILE = Pathfinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vegather.Pathfinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -429,10 +440,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DZK8EVM94K;
 				INFOPLIST_FILE = Pathfinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vegather.Pathfinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -444,6 +457,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vegather.PathfinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pathfinder.app/Pathfinder";
 			};
 			name = Debug;
@@ -456,6 +470,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vegather.PathfinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pathfinder.app/Pathfinder";
 			};
 			name = Release;
@@ -467,6 +482,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vegather.PathfinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Pathfinder;
 				USES_XCTRUNNER = YES;
 			};
@@ -479,6 +495,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vegather.PathfinderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Pathfinder;
 				USES_XCTRUNNER = YES;
 			};
@@ -503,6 +520,7 @@
 				9A91D4BD1BC81CA8003D4F34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A91D4BE1BC81CA8003D4F34 /* Build configuration list for PBXNativeTarget "PathfinderTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +529,7 @@
 				9A91D4C01BC81CA8003D4F34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A91D4C11BC81CA8003D4F34 /* Build configuration list for PBXNativeTarget "PathfinderUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +538,7 @@
 				9A91D4C31BC81CA8003D4F34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

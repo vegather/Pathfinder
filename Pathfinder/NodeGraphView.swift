@@ -10,12 +10,12 @@ import UIKit
 
 class NodeGraphView: UIView {
 
-    private var graph: NodeMap?
-    private var path: [Node]?
-    private var open: [Node]?
-    private var closed: [Node]?
+    fileprivate var graph: NodeMap?
+    fileprivate var path: [Node]?
+    fileprivate var open: [Node]?
+    fileprivate var closed: [Node]?
     
-    func setData(graph: NodeMap, path: [Node], open: [Node], closed: [Node]) {
+    func setData(_ graph: NodeMap, path: [Node], open: [Node], closed: [Node]) {
         self.graph = graph
         self.path = path
         self.open = open
@@ -30,11 +30,11 @@ class NodeGraphView: UIView {
         setNeedsDisplay()
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         if let graph = graph {
             let nodeSize = rectToDrawIn.width / CGFloat(graph.mapWidth)
             
-            UIColor.blackColor().setStroke()
+            UIColor.black.setStroke()
             
             // Draw the tiles
             for row in 0..<(graph.mapHeight) {
@@ -64,14 +64,14 @@ class NodeGraphView: UIView {
                 let firstNode = path[0]
                 let firstX = rectToDrawIn.origin.x + (CGFloat(firstNode.coordinate.x) * nodeSize) + (nodeSize / 2)
                 let firstY = rectToDrawIn.origin.y + (CGFloat(firstNode.coordinate.y) * nodeSize) + (nodeSize / 2)
-                bezierPath.moveToPoint(CGPoint(x: firstX, y: firstY))
+                bezierPath.move(to: CGPoint(x: firstX, y: firstY))
                 
                 for i in 1..<(path.count) {
                     let currentNode = path[i]
                     
                     let x = rectToDrawIn.origin.x + (CGFloat(currentNode.coordinate.x) * nodeSize) + (nodeSize / 2)
                     let y = rectToDrawIn.origin.y + (CGFloat(currentNode.coordinate.y) * nodeSize) + (nodeSize / 2)
-                    bezierPath.addLineToPoint(CGPoint(x: x, y: y))
+                    bezierPath.addLine(to: CGPoint(x: x, y: y))
                 }
                 
                 bezierPath.lineWidth = nodeSize * 0.3
@@ -91,8 +91,8 @@ class NodeGraphView: UIView {
                         width: circleSize,
                         height: circleSize)
                     
-                    let bezierPath = UIBezierPath(ovalInRect: circleRect)
-                    UIColor.blackColor().setFill()
+                    let bezierPath = UIBezierPath(ovalIn: circleRect)
+                    UIColor.black.setFill()
                     bezierPath.fill()
                 }
             }
@@ -115,13 +115,13 @@ class NodeGraphView: UIView {
                     let bottomRight = CGPoint(x: right, y: bottom)
                     
                     let bezierPath = UIBezierPath()
-                    bezierPath.moveToPoint(topLeft)
-                    bezierPath.addLineToPoint(bottomRight)
-                    bezierPath.moveToPoint(topRight)
-                    bezierPath.addLineToPoint(bottomLeft)
+                    bezierPath.move(to: topLeft)
+                    bezierPath.addLine(to: bottomRight)
+                    bezierPath.move(to: topRight)
+                    bezierPath.addLine(to: bottomLeft)
                     
                     bezierPath.lineWidth = nodeSize * 0.1
-                    UIColor.blackColor().setStroke()
+                    UIColor.black.setStroke()
                     bezierPath.stroke()
                 }
             }
@@ -135,7 +135,7 @@ class NodeGraphView: UIView {
     // MARK: Private Helpers
     // -------------------------------
     
-    private var rectToDrawIn: CGRect {
+    fileprivate var rectToDrawIn: CGRect {
         let mapRatio = CGFloat(graph!.mapWidth) / CGFloat(graph!.mapHeight)
         let viewRatio = bounds.width / bounds.height
         
@@ -166,25 +166,25 @@ class NodeGraphView: UIView {
         }
     }
     
-    private func colorForNodeCategory(category: NodeCategory) -> UIColor {
+    fileprivate func colorForNodeCategory(_ category: NodeCategory) -> UIColor {
         switch category {
-        case .Start:
-            return UIColor.yellowColor()
-        case .End:
-            return UIColor.redColor()
-        case .Grasslands:
+        case .start:
+            return UIColor.yellow
+        case .end:
+            return UIColor.red
+        case .grasslands:
             return UIColor(red: 132.0/255.0, green: 253.0/255.0, blue: 133.0/255.0, alpha: 1.0)
-        case .Forests:
+        case .forests:
             return UIColor(red: 15.0/255.0, green: 126.0/255.0, blue: 18.0/255.0, alpha: 1.0)
-        case .Roads:
+        case .roads:
             return UIColor(red: 190.0/255.0, green: 127.0/255.0, blue: 70.0/255.0, alpha: 1.0)
-        case .Mountains:
+        case .mountains:
             return UIColor(red: 166.0/255.0, green: 166.0/255.0, blue: 166.0/255.0, alpha: 1.0)
-        case .Water:
+        case .water:
             return UIColor(red: 78.0/255.0, green: 84.0/255.0, blue: 251.0/255.0, alpha: 1.0)
-        case .Empty:
-            return UIColor.whiteColor()
-        case .Obstacle:
+        case .empty:
+            return UIColor.white
+        case .obstacle:
             return UIColor(white: 128.0/255.0, alpha: 1.0)
         }
     }
